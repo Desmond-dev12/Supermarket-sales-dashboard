@@ -28,6 +28,7 @@ def load_data(file_path):
    
     data["day_of_week"]= data["date"].dt.day_name()
     
+
     
     return data
 
@@ -86,14 +87,14 @@ if filtered_data.empty:
     st.warning("No Data found for the filters")
     st.stop()
 
-st.dataframe(filtered_data.head())
+
 
 
 filtered_data["total"] = filtered_data["total"].round(2)
 filtered_data["gross_income"] = filtered_data["gross_income"].round(2)
 filtered_data["rating"] = filtered_data["rating"].round(2)
 filtered_data["quantity"] = filtered_data["quantity"].round(2)
-
+data["tax_5%"] = data["tax_5%"].round(2)
 total_sales = filtered_data["total"].sum()
 gross_income = filtered_data["gross_income"].sum()
 total_quantity = filtered_data["quantity"].sum()
@@ -118,7 +119,6 @@ with col4:
 
 sales_by_branch = filtered_data.groupby("branch")["total"].sum().reset_index()
 sales_by_branch["total"] = sales_by_branch["total"].round(1)
-st.subheader("Total Sales by Branch")
 fig_branch = px.bar(
     sales_by_branch,
     title="Total Sales by Branch",
@@ -127,7 +127,7 @@ fig_branch = px.bar(
     text="total",
     color="branch"
 )
-st.plotly_chart(fig_branch,use_container_width=True)
+
 
 
 
@@ -138,8 +138,7 @@ sales_by_product["total"] = sales_by_product["total"].round(1)
 
 avg_rating_by_product["rating"] = avg_rating_by_product["rating"].round(2)
 
-st.subheader("Total Sales and Rating by Product Line")
-col1,col2 = st.columns(2)
+
 with col1:
     fig_product_sales = px.bar(
         sales_by_product, x="product_line",
@@ -153,7 +152,7 @@ with col1:
     fig_product_sales.update_layout(xaxis=dict(tickangle=-60),
      margin=dict(b=100, t=40,))
 
-    st.plotly_chart(fig_product_sales, use_container_width=True)
+    
     with col2:
      fig_product_rating = px.bar(
             avg_rating_by_product, x="product_line",
@@ -169,9 +168,7 @@ with col1:
     fig_product_rating.update_layout(showlegend=False, height=500)
     fig_product_rating.update_layout(xaxis=dict(tickangle=-45),
      margin=dict(b=100, t=40,))
-    
 
-    st.plotly_chart(fig_product_rating, use_container_width=True)
 
 
     sales_by_customer = filtered_data.groupby("customer_type")["total"].sum().reset_index()
@@ -186,11 +183,12 @@ fig_sales_by_customer = px.pie(
                               title="Sales Distribution by Customer Type",
                               color="customer_type",
                               hole=0.4,
+                              
                               color_discrete_sequence=px.colors.sequential.Teal
 
                             
     )
-st.plotly_chart(fig_sales_by_customer, use_container_width=True)
+
 
 fig_payment_sales = px.pie(sales_by_payment,
                            names="payment",
@@ -200,7 +198,7 @@ fig_payment_sales = px.pie(sales_by_payment,
                            hole=0.4,
                            color_discrete_sequence=px.colors.sequential.Plasma)
 
-st.plotly_chart(fig_payment_sales, use_container_width=True)
+
 
 fig_sales_trend = px.line(sales_trend,
                          x="date",
@@ -210,7 +208,7 @@ fig_sales_trend = px.line(sales_trend,
                          color_discrete_sequence=["#2C3E50"]
                           )
 
-st.plotly_chart(fig_sales_trend, use_container_width=True)
+
 
 
 data["date"]=pd.to_datetime(data["date"], errors="coerce")
@@ -223,28 +221,55 @@ day_order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sund
 sales_by_day = pd.Categorical(sales_by_day["day_of_week"],
                               categories=day_order,
                               ordered=True)
+tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analytics**", "**Developer Profile**"])
+with tab1:
+    st.dataframe(filtered_data.head(7))
+with tab2:
+    st.plotly_chart(fig_branch, use_container_width=True)
+    st.plotly_chart(fig_product_sales, use_container_width=True)
+    st.plotly_chart(fig_product_rating, use_container_width=True)
+    st.plotly_chart(fig_sales_by_customer, use_container_width=True)
+    st.plotly_chart(fig_payment_sales, use_container_width=True)
+    st.plotly_chart(fig_sales_trend, use_container_width=True)    
+with tab3:
+    st.header('About the Developer')
+    st.write("Data Analyst Specializing in Python, Pandas and Streamlit")
+    st.divider()
+    col1,col2,col3 = st.columns(3)
+with col1:
+    st.markdown("**GitHub Repository**")
+    st.markdown("[**GitHub Connect**](https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard)")
+with col2:
+    st.markdown("**Linkedin Profile**")
+    st.markdown("[**LinkedIn Connect**](https://www.linkedin.com/in/desmond-pimpong-563899433/)")
+
+with col3:
+    st.markdown("**Email**")
+    st.markdown("[**Contact Developer**](mailto:pimpongdesmond1@gmail.com)")
+
+
 
 st.divider()
-st.header("Executive Summary and Business Insights")
-st.subheader("Click to view Executive Summary")
+
+st.info("Click here to view Executive Summary")
 with st.expander("Executive Summary & Business Insights"):
     st.markdown(""" ### **Business Insights**
-    * **Balanced Branch Performance**: Revenue accross A, B, C is remarkably uniform ranging between 106k and 110.5k,
+    * **Balanced Branch Performance**: Revenue across A, B, C is remarkably uniform ranging between 106k and 110.5k,
      indicating consistent regional demand without reliance on single standout store.
     * **Category Revenue vs Satisfaction Divergence:** Food and beverages generates the highest
-     sales revenue (56.1k), yet Health and Beauty earns the highest customer rating (7.11), while Sports
-      and Travel scores lowest in customer satisfaction (6.82).
+     sales revenue (56.1k) and also earns the highest customer rating (7.11), while home and lifestyle
+      and  scores lowest in customer satisfaction (6.84).
     * **Even Customer Segmentation:** Sales are split almost evenly between Members (50.8%), and Normal non-members(49.2%),
     showing strong casual foot traffic but potential underutilization of the loyalty program.
     * **Balanced Payment Ecosystem & Volatile Trends:** Payment methods are evenly distributed among E-wallet (34.7%), Cash (34.1%), 
-    and Credit Card (31.2%), through daily sales trends fluctuate heavily with sharp peaks reaching 7,000+.
+    and Credit Card (31.2%), through daily sales trends fluctuate heavily with sharp peaks reaching 7,000+ in early march.
 
 
     ### **Strategic Recommmendations**
     * **Optimize Product Inventory Allocation:** Increase stock and shelf space for high- revenue like Food and Beverages while auditing
-    supplier qualiity for underperforming product lines like Sports and Travel.
+    supplier quality for underperforming product lines like Home and Travel.
     
-    * **Enhance Loyalty Program Value:** introduce targeted member-only perks or points multipliers to incentivize the 49.2% non-member 
+    * **Enhance Loyalty Program Value:** Introduce targeted member-only perks or points multipliers to incentivize the 49.2% non-member 
     baseline into joining the loyalty program.
     * **Leverage Payment Channel Promotion:** Partner with popular E-wallet providers to run promotional cashback campaigns, reducing 
     cash-handling costs and boosting digital checkout speed.

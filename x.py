@@ -40,7 +40,7 @@ def load_data(file_path):
 data_file = "pharmacy_messy.csv"
 data = load_data(data_file)
 
-st.dataframe(data.head(10), hide_index=True)
+
 
 
 
@@ -73,8 +73,9 @@ branch_filter = data["branch"].isin(selected_branch)
 customer_type_filter = data["customer_type"].isin(selected_customer_type)   
 gender_filter = data["gender"].isin(selected_gender)
 drug_category_filter = data["drug_category"].isin(selected_drug_category)
-start_date = pd.to_datetime(selected_date[0]).date()
-end_date = pd.to_datetime(selected_date[1]).date()
+data["date"] = pd.to_datetime(data["date"])
+start_date = pd.to_datetime(selected_date[0])
+end_date = pd.to_datetime(selected_date[1])
 date_filter = (data["date"] >= start_date) & (data["date"] <= end_date)
 
 filtered_data = data[branch_filter & customer_type_filter & gender_filter &
@@ -136,7 +137,7 @@ fig_by_branch = px.bar(total_sales_by_branch,
                           text_auto=".2s",
                            color="branch")
 
-st.plotly_chart(fig_by_branch, use_container_width=True)
+
 
 total_drug_sales = filtered_data.groupby("drug_category")["total_amount"].sum().reset_index()
 avg_rating_by_drug_category = filtered_data.groupby("drug_category")["rating"].mean().reset_index()
@@ -159,7 +160,7 @@ with col1:
     fig_by_sales_drug_cat.update_layout(xaxis=dict(tickangle=-45),
                                         margin=dict(b=100, t=40))
     
-    st.plotly_chart(fig_by_sales_drug_cat, use_container_width=True)
+    
 
     fig_avg_sales_by_drug = px.bar(avg_rating_by_drug_category,
                                    title="Average Sales by Drug Category",
@@ -173,7 +174,7 @@ with col1:
     fig_avg_sales_by_drug.update_layout(xaxis=dict(tickangle=-60),
     margin=dict(b=100, t=40,))
     
-    st.plotly_chart(fig_avg_sales_by_drug, use_container_width=True)
+    
 
     sales_by_customer = filtered_data.groupby("customer_type")["total_amount"].sum().round(2).reset_index()
     sales_by_payment_method = filtered_data.groupby("payment_method")["total_amount"].sum().reset_index()
@@ -208,7 +209,7 @@ fig_by_customer = px.bar(sales_by_customer,
                          color_discrete_sequence=px.colors.sequential.Plasma
                          )
 
-st.plotly_chart(fig_by_customer, use_container_width=True)
+
 
 fig_by_payment = px.pie(sales_by_payment_method,
                         names="payment_method",
@@ -218,7 +219,7 @@ fig_by_payment = px.pie(sales_by_payment_method,
                         )
                         
 
-st.plotly_chart(fig_by_payment, use_container_width=True)
+
 
 fig_sales_trend = px.line(daily_sales_trend,
                           x="date",
@@ -228,7 +229,7 @@ fig_sales_trend = px.line(daily_sales_trend,
                                                    color_discrete_sequence=["#2C3E50"]
                                                 
                                                     )
-st.plotly_chart(fig_sales_trend, use_container_width=True)
+
 
 fig_day_revenue = px.bar(revenue_by_day, title="Revenue from Each Day of the week",
                          x="day_of_week",
@@ -238,21 +239,45 @@ fig_day_revenue = px.bar(revenue_by_day, title="Revenue from Each Day of the wee
                          text_auto=".2s",
                          color_discrete_sequence=px.colors.sequential.Plasma)
                         
-st.plotly_chart(fig_day_revenue, use_container_width=True)
-
-st.write(data["branch"].value_counts())
-st.write(data.shape)
-st.write(len(data))
 
 
+tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analysis**", "**Developer Profile**"])
+with tab1:
+    st.dataframe(data.head(10), hide_index=True)
+
+with tab2:
+    st.plotly_chart(fig_by_branch, use_container_width=True)
+    st.plotly_chart(fig_by_sales_drug_cat, use_container_width=True)
+    st.plotly_chart(fig_avg_sales_by_drug, use_container_width=True)
+    st.plotly_chart(fig_by_customer, use_container_width=True)
+    st.plotly_chart(fig_by_payment, use_container_width=True)
+    st.plotly_chart(fig_day_revenue, use_container_width=True)
+    st.plotly_chart(fig_sales_trend,use_container_width=True)
+
+with tab3:
+    st.header("About the Developer")
+    st.write("Data Analyst specializing in Python, Pandas, Streamlit")
+    st.divider()
+    col1,col2,col3 = st.columns(3)
+with col1:
+    st.markdown("**GitHub Repository**")
+    st.markdown("[**GitHub Connect**](https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard)")
+with col2:
+    st.markdown("**Linkedin Profile**")
+    st.markdown("[**LinkedIn Connect**](https://www.linkedin.com/in/desmond-pimpong-563899433/)")
+
+with col3:
+    st.markdown("**Email**")
+    st.markdown("[**Contact Developer**](pimpongdesmond1@gmail.com)")
 st.divider()
-st.header("Business Insight & Recommendations")
-st.subheader("Key Business Insight")
-st.markdown(""" * **Branch Revenue Concentration:**
+st.info("Click Here to View Executive Summary")
+with st.expander("Executive Summary and Business Insights"):
+ st.markdown(""" ### **Key Business Insights**
+* **Branch Revenue Concentration:**
 Accra Central is the dominant revenue engine (~50k GHS), 
 outperforming Takoradi (~35k GHS) and Kumasi (~30k GHS).
- This points to significantly higher customer foot traffic, 
- larger basket sizes, or a more favorable location in Accra.
+This points to significantly higher customer foot traffic, 
+larger basket sizes, or a more favorable location in Accra.
 
 * **Core Product Drivers:**
 Painkillers (~28k GHS) and Skincare (~23k GHS) generate the vast majority of overall sales, 
