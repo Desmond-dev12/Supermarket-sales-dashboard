@@ -29,7 +29,7 @@ This project processes raw transaction data to provide branch managers with real
 
 ## Author & Connect
 * **Name:** Desmond Pimpong
-*git add REA  **Data Analyst & Developer**
+* **Data Analyst & Developer**
 * **GitHub:** https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard
 * **Linkedin:** https://linkedin.com/in/desmond-pimpong-563899433
 
