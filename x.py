@@ -101,7 +101,7 @@ average_rating_by_customer = filtered_data["rating"].mean()
 total_transactions = filtered_data["receipt_id"].nunique()
 
 
-st.subheader('Key Metrics')
+st.subheader('Key Performance Indicators (KPIs)')
 col1,col2,col3,col4 = st.columns(4)
 with col1:
     st.metric(label="Total Sales", value=f"${total_sales:,.2f}")
@@ -110,13 +110,11 @@ with col2:
 with col3:
     st.metric(label="Average unit Price", value=f'{average_unit_price:,.1f}')
 with col4:
-    st.metric("Total Transactions", value=f"{total_transactions}")
+    st.metric(label="Total Transactions", value=f"{total_transactions}")
 
 data["date"] = pd.to_datetime(data["date"], errors="coerce")
 current_month = data["date"].dt.month.max()
 previous_month = current_month - 1
-
-st.subheader("Key Perfomance Indicator(KPIs)")
 filtered_data["date"] = pd.to_datetime(filtered_data["date"], errors="coerce")
 current_sales = filtered_data[filtered_data["date"].dt.month == current_month]["total_amount"].sum()
 previous_sales = filtered_data[filtered_data["date"].dt.month == previous_month]["total_amount"].sum()
@@ -275,9 +273,9 @@ with st.expander("Executive Summary and Business Insights"):
  st.markdown(""" ### **Key Business Insights**
 * **Accra Central Dominates Branch Sales**: Accra Central leads overall revenue significantly at 44k, almost double the sales of Kumasi (24k) and Takoradi (26k).
 * **Painkillers and Skincare Drive Product Revenue**: Painkillers (22k) and Skincare (20k) are the top-earning categories, whereas Diabetes & BP drugs lag furthest behind at 7.5k.
-* **Satisfaction vs. Revenue Mismatch**: Painkillers command the highest satisfaction rating at 6.9, but high-selling Antibiotics (18k) trail in customer rating at 5.9, and Diabetes & BP sits at the lowest rating (5.6).
+* **Customer Satisfaction vs. Revenue Mismatch**: Painkillers command the highest satisfaction rating at 6.9, but high-selling Antibiotics (18k) trail in customer rating at 5.9, and Diabetes & BP sits at the lowest rating (5.6).
 * **Insurance and Prescription Reliance**: Revenue is mostly anchored by Insurance (34k) and Prescription (32k) customers, while casual Walk-in purchases trail at 28k.
-* **Mobile Money and Insurance Dominate Payments**: Mobile Money (28.8%) and Insurance (33.6%) account for over 62% of total transaction volume, while Cash represents the smallest payment slice at 16.1%.
+* **Mobile Money and Insurance Dominate Payments**: Mobile Money (31.6%) and Insurance (28.8%) account for over 60% of total transaction volume, while Cash represents the smallest payment slice at 16.1%.
 * **Thursday–Friday Peak Sales Window**: Daily revenue surges on Thursday and Friday (18k each) before dropping to a midweek low on Tuesday (7.9k).
 ### **Recommendations**
 * **Reallocate Regional Inventory to Accra Central**: Increase stock distribution ratios toward Accra Central to sustain high sales velocity and prevent stockouts on top-moving items.
