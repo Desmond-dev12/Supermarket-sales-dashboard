@@ -256,7 +256,7 @@ fig_day_revenue = px.bar(revenue_by_day, title="Revenue from Each Day of the wee
                         
 
 
-tab1, tab2, = st.tabs(["**Data Overview**", "**Sales Analysis**"])
+tab1, tab2 = st.tabs(["**Data Overview**", "**Sales Analysis**"])
 with tab1:
     st.dataframe(data.head(10), hide_index=True)
 
@@ -269,9 +269,6 @@ with tab2:
     st.plotly_chart(fig_day_revenue, use_container_width=True)
     st.plotly_chart(fig_sales_trend,use_container_width=True)
 
-with tab3:
-    st.header("About the Developer")
-    st.write("Data Analyst specializing in Python, Pandas, Streamlit")
     st.divider()
     col1,col2,col3 = st.columns(3)
 with col1:
@@ -280,10 +277,6 @@ with col1:
 with col2:
     st.markdown("**Linkedin Profile**")
     st.markdown("[**LinkedIn Connect**](https://www.linkedin.com/in/desmond-pimpong-563899433/)")
-
-with col3:
-    st.markdown("**Email**")
-    st.markdown("[**Contact Developer**](pimpongdesmond1@gmail.com)")
 st.divider()
 st.info("Click Here to View Executive Summary")
 with st.expander("Executive Summary and Business Insights"):

@@ -242,10 +242,7 @@ sales_by_day = pd.Categorical(sales_by_day["day_of_week"],
 
 
 
-
-
-
-tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analytics**", "**Developer Profile**"])
+tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analytics**"])
 with tab1:
     st.dataframe(filtered_data.head(7))
 with tab2:
@@ -255,9 +252,7 @@ with tab2:
     st.plotly_chart(fig_sales_by_customer, use_container_width=True)
     st.plotly_chart(fig_payment_sales, use_container_width=True)
     st.plotly_chart(fig_sales_trend, use_container_width=True)    
-with tab3:
-    st.header('About the Developer')
-    st.write("Data Analyst Specializing in Python, Pandas and Streamlit")
+
     st.divider()
     col1,col2,col3 = st.columns(3)
 with col1:
@@ -267,9 +262,6 @@ with col2:
     st.markdown("**Linkedin Profile**")
     st.markdown("[**LinkedIn Connect**](https://www.linkedin.com/in/desmond-pimpong-563899433/)")
 
-with col3:
-    st.markdown("**Email**")
-    st.markdown("[**Contact Developer**](mailto:pimpongdesmond1@gmail.com)")
 
 
 
