@@ -28,8 +28,8 @@ This project processes raw transaction data to provide branch managers with real
 * **Customer Loyalty Growth:** Introduce targeted perks to convert the ~49% non-member customer baseline into registered loyalty members.
 
 ## Author & Connect
-**Desmond Pimpong**
-**Data Analyst & Developer**
+* **Name:** Desmond Pimpong
+  **Data Analyst & Developer**
 * **GitHub:** https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard
 * **Linkedin:** https://linkedin.com/in/desmond-pimpong-563899433
 
