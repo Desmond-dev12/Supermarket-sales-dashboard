@@ -40,8 +40,25 @@ def load_data(file_path):
 data_file = "pharmacy_messy.csv"
 data = load_data(data_file)
 
+# ==========================================
+# SIDEBAR DEVELOPER PROFILE
+# ==========================================
+st.sidebar.title("👨‍💻 Developer Profile")
+st.sidebar.write("*Desmond Pimpong*")
+st.sidebar.caption("Data Analyst &  Developer")
 
+st.sidebar.markdown("---")
 
+# Quick links buttons
+st.sidebar.subheader("🔗 Links & Portfolio")
+st.sidebar.link_button("📂 GitHub Repository", "https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard")
+st.sidebar.link_button("💼 LinkedIn Profile", "https://linkedin.com/in/desmond-pimpong-563899433")
+
+st.sidebar.markdown("---")
+
+# Tech stack breakdown
+st.sidebar.subheader("🛠️ Built With")
+st.sidebar.text("• Python 3.10+\n• Streamlit\n• Pandas & Plotly")
 
 
 st.sidebar.header("Filters")
@@ -239,7 +256,7 @@ fig_day_revenue = px.bar(revenue_by_day, title="Revenue from Each Day of the wee
                         
 
 
-tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analysis**", "**Developer Profile**"])
+tab1, tab2, = st.tabs(["**Data Overview**", "**Sales Analysis**"])
 with tab1:
     st.dataframe(data.head(10), hide_index=True)
 

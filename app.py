@@ -35,7 +35,25 @@ def load_data(file_path):
 data_path = "supermarket_sales.csv" 
 data = load_data(data_path)
 
+# ==========================================
+# SIDEBAR DEVELOPER PROFILE
+# ==========================================
+st.sidebar.title("👨‍💻 Developer Profile")
+st.sidebar.write("*Desmond Pimpong*")
+st.sidebar.caption("Data Analyst &  Developer")
 
+st.sidebar.markdown("---")
+
+# Quick links buttons
+st.sidebar.subheader("🔗 Links & Portfolio")
+st.sidebar.link_button("📂 GitHub Repository", "https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard")
+st.sidebar.link_button("💼 LinkedIn Profile", "https://linkedin.com/in/desmond-pimpong-563899433")
+
+st.sidebar.markdown("---")
+
+# Tech stack breakdown
+st.sidebar.subheader("🛠️ Built With")
+st.sidebar.text("• Python 3.10+\n• Streamlit\n• Pandas & Plotly")
 st.sidebar.header("Filters")
 selected_branch = st.sidebar.multiselect(
     "select Branch", options= data["branch"].unique(),default=data["branch"].unique()
@@ -221,6 +239,12 @@ day_order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sund
 sales_by_day = pd.Categorical(sales_by_day["day_of_week"],
                               categories=day_order,
                               ordered=True)
+
+
+
+
+
+
 tab1, tab2, tab3 = st.tabs(["**Data Overview**", "**Sales Analytics**", "**Developer Profile**"])
 with tab1:
     st.dataframe(filtered_data.head(7))
