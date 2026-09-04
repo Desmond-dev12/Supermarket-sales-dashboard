@@ -273,26 +273,19 @@ st.divider()
 st.info("Click Here to View Executive Summary")
 with st.expander("Executive Summary and Business Insights"):
  st.markdown(""" ### **Key Business Insights**
-* **Branch Revenue Concentration:**
-Accra Central is the dominant revenue engine (~50k GHS), 
-outperforming Takoradi (~35k GHS) and Kumasi (~30k GHS).
-This points to significantly higher customer foot traffic, 
-larger basket sizes, or a more favorable location in Accra.
-
-* **Core Product Drivers:**
-Painkillers (~28k GHS) and Skincare (~23k GHS) generate the vast majority of overall sales, 
-demonstrating that immediate relief medications and everyday personal care products form the backbone of your store revenue.
-
-* **End-of-Week Demand Surge:**
-Sales volume heavily skews toward the end of the week, 
-hitting peak totals on Friday (19.8k GHS), Sunday (18.8k GHS), 
-and Thursday (18.5k GHS), while Tuesday (9.1k GHS) experiences a severe mid-week slump.
-
-* **High Sales Volatility:** 
-Daily sales show sharp, periodic spikes reaching up to 4,000 to 5,000 GHS,
-followed by immediate drops near zero, indicating that purchasing behavior is highly event-driven, 
-likely influenced by promotions, pay cycles, or specific health needs""")
-
- 
+* **Accra Central Dominates Branch Sales**: Accra Central leads overall revenue significantly at 44k, almost double the sales of Kumasi (24k) and Takoradi (26k).
+* **Painkillers and Skincare Drive Product Revenue**: Painkillers (22k) and Skincare (20k) are the top-earning categories, whereas Diabetes & BP drugs lag furthest behind at 7.5k.
+* **Satisfaction vs. Revenue Mismatch**: Painkillers command the highest satisfaction rating at 6.9, but high-selling Antibiotics (18k) trail in customer rating at 5.9, and Diabetes & BP sits at the lowest rating (5.6).
+* **Insurance and Prescription Reliance**: Revenue is mostly anchored by Insurance (34k) and Prescription (32k) customers, while casual Walk-in purchases trail at 28k.
+* **Mobile Money and Insurance Dominate Payments**: Mobile Money (28.8%) and Insurance (33.6%) account for over 62% of total transaction volume, while Cash represents the smallest payment slice at 16.1%.
+* **Thursday–Friday Peak Sales Window**: Daily revenue surges on Thursday and Friday (18k each) before dropping to a midweek low on Tuesday (7.9k).
+### **Recommendations**
+* **Reallocate Regional Inventory to Accra Central**: Increase stock distribution ratios toward Accra Central to sustain high sales velocity and prevent stockouts on top-moving items.
+* **Audit Low-Rated Drug Categories**: Investigate customer feedback and supplier quality for Diabetes & BP (5.6 rating) and Antibiotics (5.9 rating) to improve satisfaction scores.
+* **Capitalize on Painkiller & Skincare Demand**: Expand shelf presence, promotional bundles, and cross-selling strategies for high-margin, top-rated categories like Painkillers and Skincare.
+* **Optimize Midweek Staffing & Restocking**: Schedule major inventory replenishment on Wednesday afternoons ahead of the Thursday-Friday peak (18k sales volume), while scaling back shift hours during the Tuesday slump (7.9k).
+* **Strengthen Digital & Insurance Partnerships**: Partner directly with Mobile Money providers and health insurance vendors to run streamlined checkout promotions and reduce cash-handling friction.
+* **Drive Walk-in Customer Conversion**: Launch OTC (Over-The-Counter) loyalty initiatives to incentivize walk-in shoppers (28k) to convert into recurring prescription or insurance-backed customers."""
 
 
+ )
