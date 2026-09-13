@@ -1,0 +1,18 @@
+/audio
+audio/Tim_Godfrey_-_Nara_ft_Travis_Greene_.mp3
+audio/Stonebwoy-–-Top-Skanka-1.mp3
+*.mp3
+*.mp3
+*.mp3
+*.mp3
+# Ignore everything by default
+*
+
+# Do NOT ignore directories
+!*/
+
+# Keep only these specific files
+!app.py
+!README.md
+!requirements.txt
+!.gitignore
