@@ -1,40 +1,40 @@
-# 💊 Pharmacy Sales & Revenue Analytics Dashboard
-
-An interactive, multi-tab Streamlit web application engineered to clean, analyze, and display sales performance, category margins, and daily volume trends across pharmacy branches.
-
----
-
-## 📌 Executive Summary
-This project processes raw transaction data to provide branch managers with real-time operational insights. It evaluates store-level performance, tracks fast-moving consumer health items, and provides strategic recommendations to optimize inventory restocking windows.
-
-## 🛠️ Tech Stack & Tools
-* **Language:** Python
-* **Data Processing:** Pandas, NumPy
-* **Data Visualization:** Plotly Express/Matplotlip
-* **Web UI Framework:** Streamlit
-* **Version Control:** Git, GitHub & Streamlit Cloud
-
-## 🚀 App Features & Architecture
-* **Global Sidebar Filtering:** Dynamic slicing by Branch and Date Range across all metrics.
-* **Executive Metrics:** Live calculated KPI cards for Total Revenue, Transaction Volume, and Average Order Value.
-* **Structured Multi-Tab Design**
-  * **Data Overview:** Filtered raw dataset inspection and verification.
-  * **Sales Analytics:** Categorical revenue charts, customer satisfaction scores, and daily sales trends.
-  * **Developer Profile:** Key operational takeaways and direct contact links.
-
-## 📊 Key Business Recommendations
-* **Inventory Restocking Alignment:** Shift primary inventory replenishment to Wednesday afternoons to support peak sales spikes occurring on Thursdays and Fridays.
-* **Core Product Protection:** Maintain safety stock buffers for high-volume drivers (Painkillers and Skincare) to eliminate stockout risks.
-* **Customer Loyalty Growth:** Introduce targeted perks to convert the ~49% non-member customer baseline into registered loyalty members.
-
-## Author & Connect
-* **Name:** Desmond Pimpong
-* **Data Analyst & Developer**
-* **GitHub:** https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard
-* **Linkedin:** https://linkedin.com/in/desmond-pimpong-563899433
-
-## ⚙️ Local Setup & Execution
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/pimpongdesmond1-dev/pharmacy-sales-dashboard.git
+‎#  📊 Supermarket Sales Dashboard
+‎
+‎An interactive web analytics application built with Python and Streamlit to analyze retail sales performance, customer trends, product line performance, and profit margins.
+‎
+‎---
+‎
+‎## 🚀 Live Demo
+‎
+‎[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/) *(Replace link once deployed)*
+‎
+‎---
+‎
+‎## 📈 Key Features
+‎
+‎* **KPI Summary Cards:** Quick metrics for Total Revenue, Average Transaction Value, and Overall Satisfaction Score.
+‎* **Sales Trends Analysis:** Visualizations tracking revenue across different branches, customer types (Member vs. Normal), and payment methods.
+‎* **Product Line Insights:** Itemized breakdowns highlighting top-performing product categories by revenue and rating.
+‎* **Interactive Filters:** Filter data dynamically by date range, branch location, and customer segment.
+‎
+‎---
+‎
+‎## 🛠️ Tech Stack
+‎
+‎* **Language:** Python
+‎* **Web Framework:** Streamlit
+‎* **Data Processing:** Pandas
+‎* **Visualization:** Plotly / Matplotlib
+‎
+‎---
+‎
+‎## 📂 Project Structure
+‎
+‎```text
+‎Supermarket-sales-dashboard/
+‎│
+‎├── app.py               # Main Streamlit application
+‎├── requirements.txt     # Python package dependencies
+‎├── README.md            # Project documentation
+‎└── .gitignore           # Excluded files and directories
+‎
