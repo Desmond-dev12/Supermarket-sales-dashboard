@@ -1,4 +1,4 @@
-‎## 📊 Supermarket Sales Dashboard
+‎# 📊 Supermarket Sales Dashboard
 ‎
 ‎An interactive web analytics application built with Python and Streamlit to analyze retail sales performance, customer trends, product line performance, and profit margins.
 ‎
