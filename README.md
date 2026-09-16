@@ -33,8 +33,8 @@ An interactive web analytics application built with Python and Streamlit to anal
 ```text
 Supermarket-sales-dashboard/
 │
+├── .gitignore           # Excluded files and directories
 ├── app.py               # Main Streamlit application
-├── requirements.txt     # Python package dependencies
 ├── README.md            # Project documentation
-└── .gitignore           # Excluded files and directories
+└── requirements.txt     # Python package dependencies
 ```
